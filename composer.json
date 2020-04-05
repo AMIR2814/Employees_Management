@@ -13,6 +13,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/web-server-bundle": "4.4.*",
         "symfony/yaml": "4.4.*",
+        "twig/extensions": "^1.5",
         "twig/twig": "^2.12"
     },
     "require-dev": {

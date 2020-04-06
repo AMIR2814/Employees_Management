@@ -1,0 +1,129 @@
+{% extends ('base.html.twig') %}
+
+{% block title %}اطلاعات پرسنل{% endblock %}
+
+{% block pageDescription %}{{ employee.firstName }} {{ employee.lastName }} {% endblock %}
+
+{% block style %}
+    <!-- bootstrap-wysiwyg -->
+    <link href="{{ asset('build/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{{ asset('build/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{{ asset('build/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{{ asset('build/starrr/dist/starrr.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block javaScript %}
+    <!-- jQuery Smart Wizard -->
+    <script src="{{ asset('build/jQuery-Smart-Wizard/js/jquery.smartWizard.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-5">
+                        <p>
+                            کدملی:
+                            <b>{{ employee.nationalCode }}</b>
+                        </p>
+
+                        <p>
+                            شماره تماس:
+                            <b>{{ employee.mobile1 }}-{{ employee.mobile2 }}-{{ employee.telephoneNo }}</b>
+                        </p>
+
+                        <p>
+                            سازمان محل فعالیت فعلی:
+                            <b>{{ employee.org.title }}</b>
+                        </p>
+
+                        <p>
+                            سازمان حقوق دهنده:
+                            <b>{{ employee.sallaryOrg.title }}</b>
+                        </p>
+
+                        <p>
+                            ساختمان محل فعالیت
+                            <b>{{ employee.building.title }}</b>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>
+                            نوع قرارداد:
+                            <b>{{ employee.contractType.title }}</b>
+                        </p>
+
+                        <p>
+                            واحد فعالیت:
+                            <b>{{ employee.unit.title }}</b>
+                        </p>
+
+                        <p>
+                            محل بایگانی پرونده:
+                            <b>{{ employee.archiveFileOrg.title }}</b>
+                        </p>
+
+                        <p>
+                            معاونت مربوطه:
+                            <b>{{ employee.unitCategory.title }}</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab1" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">اطلاعات </a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">خانواده</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content33" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="false">حسابداری</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content44" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="false">حضور و غیاب</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content55" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="false">ویرایش اطلاعات فردی</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content66" role="tab" id="profile-tabb3" data-toggle="tab" aria-controls="profile" aria-expanded="false">ابلاغ جدید</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent2" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">
+                                {% include 'admin/forms-elements/allInfoEmployee.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content22"  aria-labelledby="profile-tab">
+                                {% include 'admin/forms-elements/family.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content33" aria-labelledby="profile-tab">
+                                {% include 'admin/forms-elements/accounting.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content44" aria-labelledby="profile-tab">
+                                {% include 'admin/forms-elements/rollcallEmployee.html.twig' %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content55" aria-labelledby="profile-tab">
+                                {% include ('admin/forms-elements/newEmployee.html.twig') %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content66" aria-labelledby="profile-tab">
+                                {% include 'admin/forms-elements/newNotice.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{{ asset(employee.imagePath )}}" alt="{{ employee.firstName }}" class="img-rounded" style="height: 400px; width: 300px"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+{% endblock %}

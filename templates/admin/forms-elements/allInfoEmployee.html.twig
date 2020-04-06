@@ -1,0 +1,163 @@
+<!-- start accordion -->
+<div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel">
+        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse"
+           data-parent="#accordion" href="#collapseZiro" aria-expanded="false"
+           aria-controls="collapseZiro">
+            <h4 class="panel-title">سایر اطلاعات</h4>
+        </a>
+        <div id="collapseZiro" class="panel-collapse collapse" role="tabpanel"
+             aria-labelledby="headingThree">
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <tr>
+                        <td class="text-left">نام:</td>
+                        <td class="text-danger text-right">{{ employee.firstName }}</td>
+                        <td class="text-left">نام خانوادگی:</td>
+                        <td class="text-danger text-right">{{ employee.lastName }}</td>
+                        <td class="text-left">"جنسیت:</td>
+                        <td class="text-danger text-right">{{ employee.gender }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">نام پدر:</td>
+                        <td class="text-danger text-right">{{ employee.fatherName }}</td>
+                        <td class="text-left">کدملی:</td>
+                        <td class="text-danger text-right">{{ employee.nationalCode }}</td>
+                        <td class="text-left">شماره شناسنامه:</td>
+                        <td class="text-danger text-right">{{ employee.idNo }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">محل تولد:</td>
+                        <td class="text-danger text-right">{{ employee.placeOfBirth }}</td>
+                        <td class="text-left">شماره بیمه:</td>
+                        <td class="text-danger text-right">{{ employee.insuranceNo }}</td>
+                        <td class="text-left">نوع بیمه:</td>
+                        <td class="text-danger text-right">{{ employee.typeOfInsurance }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">شماره پرسنلی:</td>
+                        <td class="text-danger text-right">{{ employee.personnalNo }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">شماره همراه:</td>
+                        <td class="text-danger text-right">{{ employee.mobile1 }}</td>
+                        <td class="text-left">شماره همراه:</td>
+                        <td class="text-danger text-right">{{ employee.mobile2 }}</td>
+                        <td class="text-left">شماره منزل:</td>
+                        <td class="text-danger text-right">{{ employee.telephoneNo }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">ایمیل:</td>
+                        <td class="text-danger text-right">{{ employee.email }}</td>
+                        <td class="text-left">وضعیت تأهل:</td>
+                        <td class="text-danger text-right">{{ employee.maritalStatus }}</td>
+                        <td class="text-left">کدپستی:</td>
+                        <td class="text-danger text-right">{{ employee.postalCode }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">سری شناسنامه:</td>
+                        <td class="text-danger text-right">{{ employee.idSeries }}</td>
+                        <td class="text-left">سریال شناسنامه:</td>
+                        <td class="text-danger text-right">{{ employee.idSerialNo }}</td>
+                        <td class="text-left">وضعیت پایان خدمت:</td>
+                        <td class="text-danger text-right">{{ employee.soldierStatus }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">مدرک تحصیلی:</td>
+                        <td class="text-danger text-right">{{ employee.degreeOfEducation }}</td>
+                        <td class="text-left">تاریخ اخذ مدرک:</td>
+                        <td class="text-danger text-right">{{ employee.dateEducation }}</td>
+                        <td class="text-left">رشته:</td>
+                        <td class="text-danger text-right">{{ employee.fieldOfStady }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">تاریخ ازدواج:</td>
+                        <td class="text-danger text-right">{{ employee.marriageDate }}</td>
+                        <td class="text-left">آدرس منزل:</td>
+                        <td class="text-danger text-right" colspan="3">{{ employee.homeAddress }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse"
+           data-parent="#accordion" href="#collapseOne" aria-expanded="false"
+           aria-controls="collapseOne">
+            <h4 class="panel-title">سازمانهای محل فعالیت</h4>
+        </a>
+
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+             aria-labelledby="headingOne">
+            <div class="panel-body">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                    {#====================================== #}
+                    {#          history employee org         #}
+                    {#====================================== #}
+                    {% for history in historys %}
+                        {% if history.base.category is constant('BASE_ORG', history.Base)  %}
+                            <tr>
+                                <td style="width: 80%">
+                                    <a href="#">{{ history.base.title }} ({{ history.base.category }})</a>
+                                </td>
+                                <td>{{ history.baseDate|date('Y/m/d') }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse"
+           data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+           aria-controls="collapseTwo">
+            <h4 class="panel-title">واحدها</h4>
+        </a>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+             aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <table class="table table-hover table-striped">
+                    {#====================================== #}
+                    {#          history employee unit         #}
+                    {#====================================== #}
+                    {% for history in historys %}
+                        {% if history.base.category is constant('BASE_UNIT', history.Base) %}
+                            <tr>
+                                <td style="width: 80%"><a href="#">{{ history.base.title }}</a></td>
+                                <td>{{ history.baseDate|date('Y/m/d') }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse"
+           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+           aria-controls="collapseThree">
+            <h4 class="panel-title">نوع قرارداد</h4>
+        </a>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+             aria-labelledby="headingThree">
+            <div class="panel-body">
+                <table class="table table-hover table-striped">
+                    {#====================================== #}
+                    {#          history employee contract         #}
+                    {#====================================== #}
+                    {% for history in historys %}
+                        {% if history.base.category is constant('BASE_CONTRACT_TYPE', history.Base) %}
+                            <tr>
+                                <td style="width: 80%"><a href="#">{{ history.base.title }}</a></td>
+                                <td>{{ history.baseDate|date('Y/m/d') }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

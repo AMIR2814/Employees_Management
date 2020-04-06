@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>test</h1>
+
+    {{ employee.firstName }}<br>
+
+    {{ employee.org.title }}
+
+    {% for history in historys %}
+
+            {{ history.base.title }}<br>
+
+    {% endfor %}
+
+
+
+    <h1>end</h1>
+{% endblock %}
